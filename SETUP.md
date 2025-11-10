@@ -12,7 +12,7 @@
 #### Backend Environment
 Create `backend/.env`:
 ```env
-PORT=5000
+PORT=5656
 MONGODB_URI=mongodb://mongo:27017/skygear
 JWT_SECRET=your-super-secret-jwt-key-change-this
 NODE_ENV=development
@@ -24,7 +24,7 @@ UPLOAD_DIR=./uploads
 #### Frontend Environment
 Create `frontend/.env.local`:
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_URL=http://localhost:5656/api
 ```
 
 ### 3. Start with Docker
@@ -46,7 +46,7 @@ docker-compose down
 ### 4. Access the Application
 
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
+- Backend API: http://localhost:5656
 - MongoDB: localhost:27017
 
 ### 5. Create Test Users

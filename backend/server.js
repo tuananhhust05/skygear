@@ -57,7 +57,7 @@ const connectDB = async () => {
       // Auto-reconnect after 5 seconds
       setTimeout(() => {
         connectDB();
-      }, 5000);
+      }, 5656);
     });
     
     mongoose.connection.on('reconnected', () => {
@@ -67,7 +67,7 @@ const connectDB = async () => {
   } catch (error) {
     console.error('❌ MongoDB connection failed:', error.message);
     console.log('Retrying connection in 5 seconds...');
-    setTimeout(connectDB, 5000);
+    setTimeout(connectDB, 5656);
   }
 };
 
@@ -139,7 +139,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5656;
 
 // Create HTTP server
 const httpServer = createServer(app);

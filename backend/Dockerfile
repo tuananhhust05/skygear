@@ -13,7 +13,7 @@ COPY . .
 
 RUN mkdir -p uploads
 
-EXPOSE 5000
+EXPOSE 5656
 
 # Use nodemon for development (will be overridden by docker-compose command)
 CMD ["npm", "run", "dev"]

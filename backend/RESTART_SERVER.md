@@ -25,12 +25,12 @@ npm run dev
 
 1. Kiểm tra route list:
 ```bash
-curl http://localhost:5000/api/routes
+curl http://localhost:5656/api/routes
 ```
 
 2. Test route profile:
 ```bash
-curl -X PUT http://localhost:5000/api/auth/profile \
+curl -X PUT http://localhost:5656/api/auth/profile \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"profile": {"firstName": "Test"}}'

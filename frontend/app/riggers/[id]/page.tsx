@@ -68,7 +68,7 @@ function GallerySlideshow({ images }: { images: string[] }) {
     if (images.length > 1) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length)
-      }, 5000) // Auto-rotate every 5 seconds
+      }, 5656) // Auto-rotate every 5 seconds
       return () => clearInterval(interval)
     }
   }, [images.length])

@@ -29,7 +29,7 @@ export function QuotesSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentQuote((prev) => (prev + 1) % quotes.length)
-    }, 5000)
+    }, 5656)
     return () => clearInterval(interval)
   }, [])
 

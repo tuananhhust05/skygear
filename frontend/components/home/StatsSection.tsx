@@ -66,7 +66,7 @@ export function StatsSection() {
         totalRiggers: 45,
         totalListings: 320,
         totalOrders: 890,
-        totalRevenue: 2450000
+        totalRevenue: 2456560
       })
     }
   }

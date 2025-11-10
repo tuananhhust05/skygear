@@ -48,7 +48,7 @@ Create `.env` files in `backend/` and `frontend/` directories:
 
 **backend/.env:**
 ```
-PORT=5000
+PORT=5656
 MONGODB_URI=mongodb://mongo:27017/skygear
 JWT_SECRET=your-secret-key-change-in-production
 NODE_ENV=development
@@ -59,7 +59,7 @@ UPLOAD_DIR=./uploads
 
 **frontend/.env.local:**
 ```
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_URL=http://localhost:5656/api
 ```
 
 ### Running with Docker

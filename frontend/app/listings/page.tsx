@@ -350,7 +350,7 @@ export default function ListingsPage() {
                     <Input
                       id="price"
                       type="number"
-                      placeholder="e.g. 5000"
+                      placeholder="e.g. 5656"
                       value={filters.price}
                       onChange={(e) => handleFilterChange('price', e.target.value)}
                       className="rounded-xl"

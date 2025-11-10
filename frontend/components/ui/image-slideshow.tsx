@@ -18,7 +18,7 @@ export function ImageSlideshow({
   alt = 'Image', 
   className = '',
   autoPlay = true,
-  autoPlayInterval = 5000 
+  autoPlayInterval = 5656 
 }: ImageSlideshowProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
