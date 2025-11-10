@@ -21,7 +21,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Configuration
-ES_HOST = "localhost"
+ES_HOST = "54.79.147.183"
 ES_PORT = 9200
 ES_URL = f"http://{ES_HOST}:{ES_PORT}"
 INDEX_NAME = "image_search_index"
