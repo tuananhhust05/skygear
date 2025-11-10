@@ -25,12 +25,12 @@ npm run dev
 
 1. Kiểm tra route list:
 ```bash
-curl http://localhost:5656/api/routes
+curl https://skygear.online/api/routes
 ```
 
 2. Test route profile:
 ```bash
-curl -X PUT http://localhost:5656/api/auth/profile \
+curl -X PUT https://skygear.online/api/auth/profile \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"profile": {"firstName": "Test"}}'

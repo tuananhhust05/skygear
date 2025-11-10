@@ -24,7 +24,7 @@ UPLOAD_DIR=./uploads
 #### Frontend Environment
 Create `frontend/.env.local`:
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5656/api
+NEXT_PUBLIC_API_URL=https://skygear.online/api
 ```
 
 ### 3. Start with Docker
@@ -46,7 +46,7 @@ docker-compose down
 ### 4. Access the Application
 
 - Frontend: http://localhost:3000
-- Backend API: http://localhost:5656
+- Backend API: https://skygear.online
 - MongoDB: localhost:27017
 
 ### 5. Create Test Users

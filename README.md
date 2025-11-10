@@ -59,7 +59,7 @@ UPLOAD_DIR=./uploads
 
 **frontend/.env.local:**
 ```
-NEXT_PUBLIC_API_URL=http://localhost:5656/api
+NEXT_PUBLIC_API_URL=https://skygear.online/api
 ```
 
 ### Running with Docker

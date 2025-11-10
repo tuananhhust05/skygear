@@ -76,24 +76,24 @@ services:
       - skygear-network
     command: npm run dev
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: skygear-frontend
-  #   ports:
-  #     - "3737:3737"
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #     - /app/.next
-  #   environment:
-  #     - NEXT_PUBLIC_BACKEND_URL=http://localhost:5656
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - skygear-network
-  #   command: npm run dev
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: skygear-frontend
+    ports:
+      - "3737:3737"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=https://skygear.online
+    depends_on:
+      - backend
+    networks:
+      - skygear-network
+    command: npm start
 
 volumes:
   mongo_data:

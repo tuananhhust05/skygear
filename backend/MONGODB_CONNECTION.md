@@ -17,7 +17,7 @@ Backend đã được cấu hình để kết nối với MongoDB với các tí
 ### 1. Kiểm tra qua Health Check API
 
 ```bash
-curl http://localhost:5656/health
+curl https://skygear.online/health
 ```
 
 Response khi MongoDB đã kết nối:
