@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  mongo:
+    build:
+      context: ./mongo
+      dockerfile: Dockerfile
+    container_name: skygear-mongo
+    ports:
+      - "29017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: skygear
+    networks:
+      - skygear-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: skygear-elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - skygear-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: skygear-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - backend_uploads:/app/uploads
+      - /app/node_modules
+    environment:
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongo:27017/skygear
+      - JWT_SECRET=${JWT_SECRET:-change-this-secret-key}
+      - NODE_ENV=development
+      - BRIDGE_API_KEY=${BRIDGE_API_KEY}
+      - BRIDGE_API_URL=${BRIDGE_API_URL:-https://api.bridge.xyz}
+      - UPLOAD_DIR=./uploads
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    depends_on:
+      mongo:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+    networks:
+      - skygear-network
+    command: npm run dev
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: skygear-frontend
+  #   ports:
+  #     - "3737:3737"
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   environment:
+  #     - NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - skygear-network
+  #   command: npm run dev
+
+volumes:
+  mongo_data:
+  backend_uploads:
+  elasticsearch_data:
+
+networks:
+  skygear-network:
+    driver: bridge
+
