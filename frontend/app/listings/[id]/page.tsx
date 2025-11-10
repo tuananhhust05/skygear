@@ -110,6 +110,7 @@ export default function ListingDetailPage() {
                   alt="Full Rig View"
                   fill
                   className="object-cover rounded-lg"
+                  unoptimized
                 />
               </div>
             ) : null
@@ -122,6 +123,7 @@ export default function ListingDetailPage() {
                   alt="Serial Number"
                   fill
                   className="object-cover rounded"
+                  unoptimized
                 />
               </div>
             )}
@@ -132,6 +134,7 @@ export default function ListingDetailPage() {
                   alt="Reserve Packing Sheet"
                   fill
                   className="object-cover rounded"
+                  unoptimized
                 />
               </div>
             )}
